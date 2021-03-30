@@ -24,7 +24,7 @@ print(time_waited * closest_bus)
 bus_numbers = [(i, int(number)) for i, number in enumerate(busses.split(',')) if number != 'x']
 
 '''
-Write the equations to solve for the time that but 659 must arrive at, call this variable num.
+Write the equations to solve for the time that bus 659 must arrive at, call this variable num.
 
 (num - 13) % 13 == 0
 (num + 19) % 19 == 0
@@ -46,5 +46,5 @@ while not all((
     num += 108569591
 
 # Part 2 solution.
-# We originally solved for the time of bus 659 so we need to subtract 13 to get back to index 0.
+# I originally solved for the time of bus 659 so we I to subtract 13 to get back to index 0.
 print(num - 13)

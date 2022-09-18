@@ -16,7 +16,7 @@ patterns = [fr'[^{num}|\b]*{num}{num}[^{num}|\b]*$' for num in range(1, 10)]
 # Combine the patterns together separated by |
 # This forms one large pattern that says "match if a 1 appears exactly twice, or a 2 exactly twice, or a 3..."
 pattern = '|'.join(patterns)
-
+print(pattern)
 password_match = re.compile(pattern)
 
 valid_under_stricter_rules = [password for password in valid_passwords if password_match.match(password)]

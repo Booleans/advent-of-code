@@ -26,8 +26,8 @@ class Line:
 @dataclass
 class Grid:
     lines: list[Line]
-    coordinates_occupied: set(tuple((int, int))) = field(init=False)
-    overlapping_coordinates: set(tuple((int, int))) = field(init=False)
+    coordinates_occupied: set[tuple((int, int))] = field(init=False)
+    overlapping_coordinates: set[tuple((int, int))] = field(init=False)
 
     def __post_init__(self):
         self.coordinates_occupied = set()

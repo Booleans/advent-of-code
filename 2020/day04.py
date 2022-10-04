@@ -1,6 +1,6 @@
 import re
 
-with open("input.txt") as f:
+with open("inputs/day04.txt") as f:
     raw = f.read()
 
 # Passports are separated by '\n\n'.

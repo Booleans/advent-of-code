@@ -1,12 +1,12 @@
 from collections import Counter
 
-with open('input.txt') as f:
+with open("inputs/day02.txt") as f:
     inputs = [line.strip().split() for line in f]
 
 valid_passwords = 0
 
 for line in inputs:
-    low, high = line[0].split('-')
+    low, high = line[0].split("-")
     low = int(low)
     high = int(high)
     char = line[1][0]
@@ -20,7 +20,7 @@ print(valid_passwords)
 valid_passwords = 0
 
 for line in inputs:
-    low, high = line[0].split('-')
+    low, high = line[0].split("-")
     low = int(low)
     high = int(high)
     char = line[1][0]

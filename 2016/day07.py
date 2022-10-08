@@ -1,17 +1,30 @@
-import re
-
-ABBA_match = re.compile(r"^.*(\w)(\w)\2\1.*$")
-ABBA_match_in_hypernet = re.compile(r"\[\w*(\w)(\w)\2\1\w*\]")
-
 with open("inputs/day07.txt") as f:
     addresses = f.read().split("\n")
 
-supports_TLS = [
-    (
-        (ABBA_match.match(address) != None)
-        and (ABBA_match_in_hypernet.search(address) == None)
-    )
-    for address in addresses
-]
 
-print(sum(supports_TLS))
+def is_TLS_supported(address):
+    supports_TLS = False
+    in_hypernet = False
+
+    for i, char in enumerate(address[:-3]):
+        if char == "[":
+            in_hypernet = True
+            continue
+        elif char == "]":
+            in_hypernet = False
+            continue
+        else:
+            substring = address[i : i + 4]
+            if substring == substring[::-1] and substring[0] != substring[1]:
+                if in_hypernet:
+                    return False
+                else:
+                    supports_TLS = True
+
+    return supports_TLS
+
+
+# Part 1 solution.
+num_tls_supported_addresses = sum(is_TLS_supported(address) for address in addresses)
+
+print(f"The number of addresses that support TLS is {num_tls_supported_addresses}.")

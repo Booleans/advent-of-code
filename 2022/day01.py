@@ -1,10 +1,23 @@
-with open("inputs/day01.txt") as f:
-    elf_inventories = f.read().split("\n\n")
-    elf_inventories = [
-        [int(snack) for snack in elf.split("\n")] for elf in elf_inventories
-    ]
+from dataclasses import dataclass, field
 
-calories_carried = sorted([sum(elf) for elf in elf_inventories], reverse=True)
+
+@dataclass
+class Elf:
+    foods: list[int]
+    calories: int = field(init=False)
+
+    def __post_init__(self):
+        self.calories = sum(self.foods)
+
+
+def parse(raw: str) -> list[Elf]:
+    return [Elf([int(food) for food in line.split("\n")]) for line in raw.split("\n\n")]
+
+
+with open("inputs/day01.txt") as f:
+    elves = parse(f.read())
+
+calories_carried = sorted([elf.calories for elf in elves], reverse=True)
 
 # Part 1 solution.
 print(f"The elf carrying the most calories is carrying {calories_carried[0]} calories.")

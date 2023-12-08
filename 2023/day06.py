@@ -12,7 +12,7 @@ def num_ways_to_win(TIME, DISTANCE):
 with open('inputs/day06.txt') as f:
     times, distances = f.read().split('\n')
 
-pattern = f'(\d+)'
+pattern = r'(\d+)'
 numbers = re.compile(pattern)
 
 race_times = tuple(int(time) for time in numbers.findall(times))

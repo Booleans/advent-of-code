@@ -30,3 +30,21 @@ while i in range(len(jumps)):
     steps_taken += 1
 else:
     print(steps_taken)
+
+
+def num_steps_to_reach_exit(jumps: list[int]) -> int:
+    jumps = jumps[:]
+
+    steps_taken = 0
+    i = 0
+
+    while i in range(len(jumps)):
+        jump = jumps[i]
+        jumps[i] += 1
+        i += jump
+        steps_taken += 1
+    else:
+        return steps_taken
+
+
+print(num_steps_to_reach_exit(JUMPS))

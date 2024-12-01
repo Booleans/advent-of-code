@@ -1,12 +1,13 @@
+import re
 from collections import Counter
 
 with open("inputs/day01.txt") as f:
-    raw = f.read().split()
+    raw = f.read()
 
-nums = [int(num) for  num in raw]
+rows = re.findall(r'(\d+)\s{3}(\d+)', raw)
 
-left_list = sorted(nums[0::2])
-right_list = sorted(nums[1::2])
+left_list =  sorted([int(row[0]) for row in rows])
+right_list = sorted([int(row[1]) for row in rows])
 
 total_distance = sum(abs(left - right) for left, right in zip(left_list, right_list))
 

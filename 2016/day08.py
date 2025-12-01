@@ -29,3 +29,5 @@ net_rotations = rotations % width
 screen[row, :] = np.concatenate((screen[row, -net_rotations:], screen[row, :-net_rotations]))
 
 print(screen)
+
+from itertools import batched

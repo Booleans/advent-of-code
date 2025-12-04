@@ -19,3 +19,16 @@ for ID_range in product_ID_ranges:
             invalid_IDs.append(num)
 
 print(sum(invalid_IDs))
+
+pattern = r'^(\d+)\1+$'
+
+invalid_ID = re.compile(pattern)
+
+invalid_IDs = [] 
+
+for ID_range in product_ID_ranges:
+    for num in ID_range:
+        if invalid_ID.match(str(num)):
+            invalid_IDs.append(num)
+
+print(sum(invalid_IDs))

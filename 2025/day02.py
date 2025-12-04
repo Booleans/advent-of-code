@@ -6,8 +6,16 @@ invalid_ID = re.compile(pattern)
 
 invalid_IDs = [] 
 
-for num in range(199617, 254905):
-    if invalid_ID.match(str(num)):
-        invalid_IDs.append(num)
-    
-x = 5       
+with open("inputs/day02.txt") as f:
+    raw = f.read().split(',')
+    product_ID_ranges = []
+    for id_range in raw:
+        start_num, stop_num = id_range.split('-')
+        product_ID_ranges.append(range(int(start_num), int(stop_num)+1))
+
+for ID_range in product_ID_ranges:
+    for num in ID_range:
+        if invalid_ID.match(str(num)):
+            invalid_IDs.append(num)
+
+print(sum(invalid_IDs))
